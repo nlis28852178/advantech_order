@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Checkout - MyAdvantech</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/modal.css" />
+  <link rel="stylesheet" href="css/file-modal.css" />
+  <link rel="stylesheet" href="css/cstep.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://mya.advantech.com/Content/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="https://mya.advantech.com/Content/myAdvan.css" rel="stylesheet" type="text/css">
+  <link href="https://mya.advantech.com/Includes/iziModal-master/iziModal.min.css" rel="stylesheet" type="text/css">
+  <link href="https://mya.advantech.com/Includes/jquery/jquery-ui.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <!-- Top Utility Bar -->
+  <div id="myAdvan-header">
+    <div class="row-fluid" style="background-image:url(img/header-bg.jpg);">
+      <div class="row-maxwidth-98pct">
+        <img src="img/header.jpg" width="100%" height="126" alt="header">
+      </div>
+    </div>
+  </div>
+  <!-- end #advan-header -->
+  <div class="headerWrapper">
+    <div class="container">
+      <nav class="breadcrumbs-wrapper" aria-label="Breadcrumb">
+        <svg class="breadcrumbs__icon" width="7.4" height="12" viewBox="0 0 7.4 12" xmlns="http://www.w3.org/2000/svg"
+          role="img" aria-hidden="true">
+          <path d="M7.4 1.4L6 0 0 6l6 6 1.4-1.4L2.8 6z" fill="#004280" />
+        </svg>
+        <a class="breadcrumbs__back" href="#">Back to shopping cart</a>
+      </nav>
+    </div>
+  </div>
+  <!-- Checkout Steps -->
+  <div class="checkout-steps" role="list" aria-label="Checkout steps">
+    <!-- Step 1 -->
+    <div class="cstep is-completed" role="listitem" aria-current="false">
+      <span class="cstep__icon" aria-hidden="true">
+        <!-- Font Awesome 購物車 ICON -->
+        <i class="fa-solid fa-cart-shopping"></i>
+      </span>
+      <span class="cstep__label fontcolor-b">Shopping Cart</span>
+      <span class="cstep__arrow" aria-hidden="true"></span>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="cstep is-current" role="listitem" aria-current="step">
+      <span class="cstep__icon checkout-icon" aria-hidden="true">
+        <!-- Font Awesome 購物車 -->
+        <i class="fa-solid fa-cart-shopping"></i>
+
+        <!-- 右下白底圓＋橘色勾＋外圍橘框 -->
+        <svg class="check-badge" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <!-- 白底圓 + 橘色描邊 -->
+          <circle cx="12" cy="12" r="11" fill="#fff" stroke="#F39800" stroke-width="3.2" />
+          <!-- 橘色勾 -->
+          <path d="M7 12l3 3 6-6" fill="none" stroke="#F39800" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </span>
+      <span class="cstep__label fontcolor-b">Checkout</span>
+      <span class="cstep__arrow" aria-hidden="true"></span>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="cstep is-upcoming" role="listitem" aria-current="false">
+      <!-- Payment ICON｜一模一樣的大卡片＋清楚細節 -->
+      <span class="cstep__icon icon-payment size-md" aria-hidden="true">
+        <svg class="pay-card4x3" viewBox="0 0 64 48" aria-hidden="true" focusable="false">
+          <defs>
+            <!-- 白=保留；黑=挖空（透出灰底），讓內部細節清楚 -->
+            <mask id="pay-card-cut">
+              <!-- 卡片本體 -->
+              <rect x="4" y="6" width="56" height="36" rx="6" fill="#fff" />
+              <!-- 右上小方塊（挖空） -->
+              <rect x="48" y="10" width="8" height="8" rx="1.6" fill="#000" />
+              <!-- 中間長條（挖空） -->
+              <rect x="16" y="24" width="32" height="4" rx="2" fill="#000" />
+              <!-- 下方兩條短線（挖空） -->
+              <rect x="16" y="32" width="14" height="4" rx="2" fill="#000" />
+              <rect x="32" y="32" width="14" height="4" rx="2" fill="#000" />
+            </mask>
+          </defs>
+          <!-- 套遮罩的白色卡片 -->
+          <rect x="4" y="6" width="56" height="36" rx="6" fill="#fff" mask="url(#pay-card-cut)" />
+        </svg>
+      </span>
+
+      <span class="cstep__label fontcolor1 fontcolor-gray">Payment</span>
+      <span class="cstep__arrow" aria-hidden="true"></span>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="cstep is-upcoming" role="listitem" aria-current="false">
+      <span class="cstep__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <defs>
+            <!-- 勾的基礎形狀（白色、圓角） -->
+            <path id="tick" d="M5 8.5 L8.6 12.1 L19 3.7" fill="none" stroke="#fff" stroke-width="3.2"
+              stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
+          </defs>
+
+          <!-- 上面的勾：以(12,8)為中心縮放 0.86 倍（可改 0.8~0.95） -->
+          <use href="#tick" transform="translate(12,8) scale(0.7) translate(-12,-8)" />
+
+          <!-- 下面的勾：原尺寸，往下位移 7（可調整間距） -->
+          <use href="#tick" transform="translate(0, 8)" />
+        </svg>
+      </span>
+
+      <span class="cstep__label fontcolor1 fontcolor-gray">Complete</span>
+    </div>
+  </div>
+
+  <div class="checkout-container aic-form">
+
+    <!-- Checkout Title -->
+    <h2 class="checkout-title">Checkout</h2>
+
+    <!-- Purchase Information Section -->
+    <div class="section">
+      <div class="section-header">
+        <h3>Purchase Information</h3>
+      </div>
+      <div class="section-content">
+        <!-- Buyer -->
+        <div class="form-group">
+          <label class="form-title">Buyer</label>
+          <div class="form-info">
+            <div class="buyer-name">Microsoft Corporation</div>
+            <div class="buyer-details">Robin.Brown</div>
+            <div class="buyer-details">(555) 555-1234</div>
+            <div class="buyer-details">One Microsoft Way, Redmond, WA 98052-6399, USA</div>
+          </div>
+        </div>
+
+        <!-- Related Persons -->
+        <div>
+          <label class="form-title">Related Persons</label>
+          <div class="form-info">
+            <div class="field-inline">
+              <label class="form-label" for="contactPerson">Contact Person <span class="req"
+                  aria-hidden="true">*</span></label>
+              <select class="form-select" id="contactPerson" name="contactPerson" required>
+                <option value="" disabled selected hidden>Select</option>
+                <option>Robin.Brown@microsoft.com</option>
+              </select>
+            </div>
+            <div class="field-inline">
+              <label class="form-label" for="payer">Payer <span class="req" aria-hidden="true">*</span></label>
+              <select class="form-select" name="payer" required>
+                <option value="" disabled selected hidden>Select</option>
+                <option>Robin.Brown@microsoft.com</option>
+              </select>
+            </div>
+            <div class="field-inline2">
+              <label class="form-label" for="licenseRecipient">WISE License Recipient Email <span class="req"
+                  aria-hidden="true">*</span></label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="example@email.com" required>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Order Section -->
+    <div class="section">
+      <div class="section-header">
+        <h3>Order</h3>
+      </div>
+      <div class="section-content">
+        <div class="form-group"><label class="form-title" id="order-legend">Order Information</label>
+          <div class="form-info">
+            <div class="field-inline">
+              <label class="form-label" for="poNumber">PO Number</label>
+              <input class="form-input" id="poNumber" name="poNumber" type="text" value="00001112222">
+            </div>
+            <div class="field-inline">
+              <label class="form-label">PO Date</label>
+              <div class="date-field">
+                <input type="date" id="poDate" class="ui-date" />
+                <span class="date-placeholder">YYYY / MM / DD</span>
+                <button type="button" class="date-trigger" aria-label="date">
+                  <i class="fa-solid fa-calendar-days"></i>
+                </button>
+              </div>
+
+            </div>
+            <div class="field-inline">
+              <label class="form-label">Upload PO Document</label>
+              <div style="flex:1;">
+                <!-- 藍色框 -->
+                <div class="file-upload">
+                  <div class="file-display">
+                    <span class="file-name">No file selected</span>
+                    <div class="file-actions"></div>
+                  </div>
+                </div>
+                <!-- Select File 按鈕：區塊外靠左 -->
+                <div class="file-cta">
+                  <button class="btn-upload" type="button">Select File</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label class="form-label spacing_b12" for="orderNote">Order Note</label>
+          <div style="flex:1;">
+            <textarea id="orderNote"
+              class="form-textarea">This item requires a mandatory power adapter not included in the standard package. Shipment may be delayed if adapter compatibility is not confirmed before order placement. Please verify the required specifications and confirm with your technical contact before proceeding.</textarea>
+            <div class="char-count">(244 / 1000)</div>
+          </div>
+        </div>
+        <div>
+          <label class="form-label spacing_b12" for="salesNote">Sales Note From Customer</label>
+          <div style="flex:1;">
+            <textarea id="salesNote"
+              class="form-textarea">Customer requests the units to be pre-configured with BIOS version 1.23 and labeled with custom asset tags. Delivery must be arranged via FedEx account 12345678 with DDP terms. Please confirm packaging details and notify upon shipment.</textarea>
+            <div class="char-count">(244 / 300) </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shipping Information Section -->
+    <div class="section">
+      <div class="section-header">
+        <h3>Shipping Information</h3>
+      </div>
+      <div class="section-content">
+        <!-- Shipping Recipient -->
+        <div class="form-group" data-no-clear>
+          <label class="form-title" id="ship-recipient-legend">Shipping Recipient</label>
+          <div class="recipient-info">
+            <div class="recipient-name">Apple Inc.</div>
+            <div class="recipient-details">Emily.Jackson</div>
+            <div class="recipient-details">(206) 555-9876</div>
+            <div class="recipient-details">410 Terry Ave North, Seattle, WA 98109, USA (Tax Juri.:000111222)</div>
+            <div class="card-actions">
+              <button class="btn-address" data-role="shipping">Select</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- End Customer -->
+
+        <div class="form-group">
+          <label class="form-title" id="invoice-recipient-legend">End Customer</label>
+          <div class="checkbox-group spacing_b15">
+            <input type="checkbox" id="sameAsBuyer" name="sameAsBuyer">
+            <label for="same-as-buyer">Same as Shipping Recipient</label>
+          </div>
+          <div class="customer-info">
+            <div class="form-info2">
+              <div class="card-actions">
+                <button class="btn-address">Select</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Shipping Related -->
+        <div>
+          <label class="form-title" id="shipping-related-legend">Shipping Related</label>
+
+          <div class="form-info">
+            <div class="field-inline">
+
+              <label class="form-label" for="reqDelivery">Requested Delivery Date <span class="req"
+                  aria-hidden="true">*</span></label>
+              <div class="date-field">
+                <input type="date" id="poDate" class="ui-date" required />
+                <span class="date-placeholder">YYYY / MM / DD</span>
+                <button type="button" class="date-trigger" aria-label="date">
+                  <i class="fa-solid fa-calendar-days"></i>
+                </button>
+              </div>
+            </div>
+            <div class="field-inline">
+              <label class="form-label" for="plan">Plan <span class="req" aria-hidden="true">*</span></label>
+              <select class="form-select" id="plan" required>
+                <option value="" disabled selected hidden> </option>
+                <option>Self Combination</option>
+              </select>
+            </div>
+            <div class="field-inline">
+              <label class="form-label" for="incoterm">Incoterm <span class="req" aria-hidden="true">*</span></label>
+              <select class="form-select" id="incoterm" required>
+                <option value="" disabled selected hidden> </option>
+                <option>DDP</option>
+              </select>
+            </div>
+            <div class="field-inline">
+              <label class="form-label" for="incotermLocation">Incoterm Location</label>
+              <div>SORBOLO.IT</div>
+            </div>
+            <div class="field-inline">
+              <label class="form-label" id="shipConditionLegend">Shipping Condition</label>
+              <div class="font16">Advantech Forwarder</div>
+            </div>
+            <div class="field-inline">
+              <label class="form-label">Allow Partial Shipments? <span class="req" aria-hidden="true">*</span></label>
+              <div class="radio-group" style="flex:1;">
+                <input type="radio" id="partial-yes" name="partial" value="yes" required><label
+                  for="partial-yes">Yes</label>
+                <input type="radio" id="partial-no" name="partial" value="no"><label for="partial-no">No</label>
+              </div>
+            </div>
+            <div class="field-inline">
+              <label class="form-label">Freight (taxable)</label>
+              <div>240</div>
+            </div>
+            <div class="field-inline2">
+              <label class="form-label">Forwarder Account No.</label>
+              <input type="text" class="form-input" value="UPS#766321">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Billing Section -->
+    <div class="section">
+      <div class="section-header">
+        <h3>Billing</h3>
+      </div>
+      <div class="section-content">
+        <!-- Invoice Recipient -->
+        <div class="form-group">
+          <label class="form-title" id="invoice-recipient-legend">Invoice Recipient</label>
+          <div class="checkbox-group spacing_b15">
+            <input type="checkbox" id="sameAsBuyer" name="sameAsBuyer">
+            <label for="same-as-buyer">Same as Buyer</label>
+          </div>
+          <div class="customer-info">
+            <div class="form-info2">
+              <div class="card-actions">
+                <button class="btn-address">Select</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Invoice Information -->
+        <div>
+          <label class="form-title" id="invoice-format-legend">Invoice Information</label>
+          <div class="form-info">
+            <div class="field-inline">
+              <label class="form-label">Invoice Format <span class="req" aria-hidden="true">*</span></label>
+              <div class="radio-group" style="flex:1;">
+                <div>
+                  <input type="radio" id="show-all" name="invoice" value="show-all" required>
+                  <label for="show-all">Show ALL items in invoices</label><br>
+                  <label for="show-only-main">
+                    <input type="radio" id="show-only-main" name="invoice" value="show-only-main">
+                    Show ONLY MAIN items in invoices</label><br>
+                  <label for="show-only-main-printing">
+                    <input type="radio" id="show-only-main-printing" name="invoice" value="show-only-main-printing">
+                    Show ALL items in invoices, but ONLY MAIN item pricing</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Order Summary -->
+    <div class="order-summary">
+      <div class="summary-row spacing_b25"><span class="summary-label">Order Summary</span></div>
+      <div class="summary-row spacing_b15"><span class="summary-item">Subtotal</span>
+        <span class="summary-value">USD$283,898</span>
+      </div>
+      <div class="summary-row spacing_b15"><span class="summary-item">Freight</span>
+        <span class="summary-value">240</span>
+      </div>
+      <div class="summary-row spacing_b15"><span class="summary-item">Taxes</span>
+        <span class="summary-value">N/A</span>
+      </div>
+      <div class="summary-row spacing_b15"><span class="summary-item">Promotion Discount</span><span
+          class="summary-value">N/A</span></div>
+      <div class="summary-row total"><span class="summary-item">Order Total</span>
+        <span class="summary-value">USD$283,898</span>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn-next">Next</button>
+    </div>
+  </div>
+  <div id="myAdvan-footer">
+    <div class="row-fluid" style="background-image:url(img/footer-bg.jpg);background-repeat:repeat-x;">
+      <div class="row-maxwidth-98pct">
+        <img src="img/footer.jpg" width="100%" height="108" alt="footer">
+      </div>
+    </div>
+  </div>
+  <!-- end #advan-footer -->
+  <script src="js/modal.js"></script>
+  <script src="js/file-modal.js"></script>
+  <script src="js/validate.js"></script>
+  <script src="https://mya.advantech.com/Scripts/bootstrap.min.js" type="text/javascript"></script>
+  <script src="https://mya.advantech.com/Includes/jquery/jquery-3.6.0.min.js" type="text/javascript"></script>
+  <script src="https://mya.advantech.com/Scripts/jquery-scrolltofixed-min.js" type="text/javascript"></script>
+  <script src="https://mya.advantech.com/Scripts/main.js" type="text/javascript"></script>
+  <script src="https://mya.advantech.com/Includes/jquery/jquery-ui.min.js" type="text/javascript"></script>
+  <script src="https://mya.advantech.com/Includes/iziModal-master/iziModal.min.js" type="text/javascript"></script>
+  <script src="https://mya.advantech.com/Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+  <script src="https://mya.advantech.com/Scripts/loadingoverlay.js" type="text/javascript"></script>
+  <script src="https://mya.advantech.com/Scripts/sweetalert2.js" type="text/javascript"></script>
+
+</body>
+
+</html>
