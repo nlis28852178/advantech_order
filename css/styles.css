@@ -586,6 +586,7 @@ select option {
 }
 
 .btn-address2 {
+    background-color: #FFFFFF;
     color: #F39800;
     border: 1px solid #F39800;
     font-size: 16px;
