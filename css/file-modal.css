@@ -1,0 +1,175 @@
+/* ===== File Upload 藍色框（上傳後：檔名＋icon） ===== */
+.file-upload {
+  background: #CCD9E6;
+  width: auto;
+  height: 40px;
+}
+
+.file-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.file-name {
+  font-size: 16px;
+  font-weight: 400;
+  color: #212529;
+}
+
+.file-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.file-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  color: #1E4A72;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.file-icon:hover { color: #FF8C00; }
+
+/* ===== 表單中的 Select File（下一行靠左） ===== */
+.file-cta {text-align: left;}
+.btn-upload {
+  background: #F39800;
+  border: 1px solid #F39800;
+  border-radius: 25px;
+  width: 165px;
+  height: 40px;
+}
+.btn-upload:hover { background: #F39800; }
+
+/* ===== Modal 外層 ===== */
+.file-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: #00000066;
+  justify-content: center;
+}
+
+/* 卡片：去掉藍色標題橫條，白底圓角＋陰影 */
+.file-modal__card {
+  position: relative;
+  background: #fff;
+  width: 500px;
+  height: max-content;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+   /* 外框深藍，貼近圖1 */
+  margin-top: 100px;
+}
+
+/* 右上角關閉 X */
+.file-modal__close {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  background: #ffffff;
+  border: none;
+  width: 14px;
+  height: 14px;
+  line-height: 1;
+  color: #004280;
+}
+
+/* 內容置中 + 間距 */
+.file-modal__body {
+  padding: 30px 0px 30px 0px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* 底部關閉鈕容器 */
+.file-modal__footer {
+  text-align: right;
+}
+
+/* 深藍按鈕（底部 Close） */
+.file-btn {
+  background: #1E4A72;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.file-btn:hover { filter: brightness(0.96); }
+
+/* 橘色膠囊（彈窗內 Select File） */
+.file-btn--pill {
+  border-radius: 25px;
+  width: 165px;
+  height: 40px;
+  background: #F39800;
+  border: none;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+}
+.file-btn--pill:hover { filter: brightness(0.97); }
+
+/* Dropzone：虛線邊框、圓角、置中 */
+.file-dropzone {
+  padding: 25px 0px 0px 0px;
+  cursor: pointer;
+  background: #fff;
+  text-align: center;
+  border-top: 1px solid #CCCCCC;
+}
+.file-dropzone.dragover {
+  background: #f3f7fb;
+  border-color: #1E4A72;
+}
+
+/* 雲朵ICON */
+.file-cloud {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1E4A72;
+  margin-bottom: 6px;
+}
+
+/* 文案 */
+.dz-title {margin: 12px 0 12px 0;font-size: 16px;font-weight: 400;color: #212529;}
+.dz-sep {margin: 0 0 12px 0;font-size: 16px;font-weight: 400;color: #212529;}
+
+/* 錯誤行：紅色置中 */
+.file-error {
+  color: #FF0000;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+   /* 保留高度避免跳動 */
+  margin-top: 10px;
+}
+
+/* 說明：兩行置中 */
+.file-info {
+  font-size: 14px;
+  color: #212529;
+  text-align: center;
+  padding-top: 20px;
+  line-height: 26px;
+}
+
+/* RWD 小調整 */
+@media (max-width: 480px) {
+  .file-modal__card { width: 96%; }
+  .file-modal__body {padding: 30px 0px;}
+  .file-dropzone { padding: 22px 12px 16px; }
+}
+
+/* ===== 行為切換：預設只顯示 Select File；有檔案才顯示藍條 ===== */
+.field-inline .file-upload { display: none !important; }
+.field-inline.has-file .file-upload { display: block !important; }
+.field-inline.has-file .file-cta { margin-top: 10px !important; }

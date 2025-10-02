@@ -1,0 +1,185 @@
+.myA-modal {
+  display: none;
+  position: fixed;
+  inset: 0px;
+  z-index: 1000;
+  background: #00000066;
+  justify-content: center;
+  align-items: center;
+}
+
+.myA-modal__card {
+  width: 820px;
+  max-width: 100%;
+  background: #F2F2F2;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 32px;
+  border: 1px solid rgb(229, 231, 235);
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+}
+
+.myA-modal__header {
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #1F2937;
+  padding: 15px 25px 15px 25px;
+  background: #F2F2F2;
+}
+
+.myA-modal__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0px;
+  color: #F2F2F2;
+}
+
+.myA-modal__close {
+  cursor: pointer;
+  line-height: 1;
+  color: #004280;
+}
+.myA-modal__close:hover { opacity: 1; }
+
+.myA-modal__body {
+  padding: 0px 25px;
+  overflow-y: auto;
+}
+
+/* ===== Search ===== */
+.myA-search {
+  display: grid;
+  grid-template-columns: 1fr 200px 96px;
+  margin-bottom: 25px;
+}
+.myA-input, .myA-input--id {
+  border: 1px solid #CCCCCC;
+  padding: 8px 10px;
+  font-size: 16px;
+  background: #FFFFFF;
+  margin-bottom: 12px;
+}
+.myA-btn {
+  background: #F39800;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 18px;
+  font-size: 16px;
+  cursor: pointer;
+  min-width: 100%;
+  height: 40px;
+  width: 135px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.myA-btn:hover { background: #e07b00; }
+
+/* ===== List ===== */
+.myA-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow: auto;
+}
+
+.myA-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  background: #FFFFFF;
+  padding: 20px;
+  border: 1px solid #E5E7EB;
+}
+
+/* 滑鼠 hover 預覽 */
+.myA-row:hover {
+  border-color: #004280;
+  background: #E5ECF2;
+}
+
+/* 被選取（你要的「Hover 視覺」） */
+.myA-row.is-hover {
+  border: 1px solid #004280;      /* #004280 實線 1px */
+  background: #E5ECF2;            /* #E5ECF2 背景 */
+}
+
+/* 內容區 */
+.myA-info {
+  font-size: 16px;
+  font-weight: 400;
+  color: #212529;
+  flex: 1 1 auto;
+}
+.myA-info strong {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #212529;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* 右側按鈕（預設 Select） */
+.myA-pill {
+  display: inline-flex;                 /* 防止不同 reset 造成收縮 */
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  color: #F39800;
+  border: 1px solid #F39800;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 400;
+  width: 135px;
+  height: 40px;
+  flex-shrink: 0;                       /* 禁止被擠掉 */
+}
+
+/* 被選取（Selected 視覺） */
+.myA-pill.is-selected {
+  background: #F39800;                  /* 橘底 */
+  color: #FFFFFF;                       /* 白字 */
+  border-color: #F39800;                /* 橘框 */
+}
+
+.myA-pill[disabled] {
+  background: #FFE8CC;
+  color: #9A5412;
+  border-color: #FFC38A;
+  cursor: default;
+}
+
+@media (max-width: 1024px) {
+  .myA-modal__card { width: 90%; }
+}
+
+@media (max-width: 640px) {
+  .myA-modal { padding: 0px 8px; }
+  .myA-modal__card { width: 100%; height: 90vh; }
+  .myA-modal__body { padding: 0px 25px; }
+  .myA-search { grid-template-columns: 1fr; }
+  .myA-btn { width: 100%; justify-self: stretch; }
+  .myA-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .myA-pill { align-self: flex-end; }
+}
+
+/* 桌機版固定 3 欄搜尋列 */
+@media (min-width: 641px) {
+  .myA-search {
+    display: grid;
+    grid-template-columns: 360px 240px 135px; /* Company / ID / Button */
+    column-gap: 16px;
+    grid-auto-rows: auto;
+    align-items: end;
+  }
+  .myA-search label:nth-of-type(1) { grid-column: 1; grid-row: 1; margin: 0 0 6px; }
+  .myA-search label:nth-of-type(2) { grid-column: 2; grid-row: 1; margin: 0 0 6px; }
+  .myA-search .myA-input      { grid-column: 1; grid-row: 2; width: 100%; height: 40px; margin: 0; box-sizing: border-box; }
+  .myA-search .myA-input--id  { grid-column: 2; grid-row: 2; width: 100%; height: 40px; margin: 0; box-sizing: border-box; }
+  .myA-search .myA-btn { grid-column: 3; grid-row: 2; width: 135px; height: 40px; margin: 0; justify-self: end; }
+}
